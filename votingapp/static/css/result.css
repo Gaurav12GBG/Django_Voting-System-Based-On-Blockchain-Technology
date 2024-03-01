@@ -1,0 +1,23 @@
+* {
+    margin: 0 px;
+    padding: 0 px;
+    box-sizing: border-box;
+}
+
+.imgchange {
+    width: 180px;
+    height: 180px;
+    margin: auto;
+    display: block;
+}
+
+.textalign {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-body p {
+    color: green;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

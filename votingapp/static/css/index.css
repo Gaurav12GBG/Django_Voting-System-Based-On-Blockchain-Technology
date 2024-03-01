@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+}
+
+.makeBorder {
+  border: 1px solid #878b87;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.madeButton {
+  border: 2px solid #eee6e6;
+  width: 215px;
+  box-shadow: 5px 10px 8px #e6e6e6;
+  margin-right: 80px;
+}
+
+.madeButton img {
+  width: 30px;
+  margin-right: 8px;
+}
+/* common styling */
+h1
+{
+font-family: 'Montserrat', sans-serif;
+font-size:3.5rem;
+line-height:1.5;
+color:white;
+}
+h2{
+ color:white;
+ font-family: 'Montserrat', sans-serif;
+ font-size:3rem;
+ line-height:1.1;
+}
+h3{
+font-family: 'Montserrat', sans-serif;
+font-size:25px;
+}
+
+/* navbar styling */
+.navbar
+{
+padding: 0 0 4.5rem;
+}
+.navbar-brand
+{
+font-size:3.25rem;
+font-weight:bold;
+}
+.nav-item
+{
+padding:0 18px;
+}
+.nav-link
+{
+font-size:1.2rem;
+}
+/* header container styling */
+#title
+{
+background: rgb(2,0,36);
+background: linear-gradient(30deg, rgba(2,0,36,1) 0%, rgba(4,4,69,1) 35%, rgba(0,212,255,1) 100%);
+background-size:cover;
+margin-bottom:-2%;
+}
+.container-fluid
+{
+padding:3% 6%;
+}
+
+
+.acc-btn
+{
+margin:54px 10px 74px;
+}
+
+
+
+
+#header-img
+{
+transform:rotate(25deg);
+width:60%;
+position:absolute;
+right:30%;
+}
+
+
+
+/* Section 2 */
+#features
+{
+padding:7% 15%;
+background-color:whitesmoke;
+position:relative;
+
+}
+.features-row
+{
+text-align:center;
+padding-top:50px;
+}
+.features-row svg{
+margin-bottom:20px; 
+filter:invert(50%); 
+}
+.features-row svg:hover{
+filter:invert(0%);
+
+}
+.feature-row p{
+color:rgb(105, 105, 105);
+}
+.feat{
+background-color:white;
+}
+
+/* section3 and section4 */
+
+#testimonials
+{
+background-color:rgb(247, 100, 74);
+text-align:center;
+
+}
+.testimonials-img
+{
+margin:20px 38px 50px;
+border-radius:100%;
+height:10rem;
+}
+.carousel-item
+{
+padding:7% 15%;
+}
+#press
+{
+background-color:rgb(247, 100, 74);
+text-align:center;
+padding:0% 10% 7% 10%;
+} 
+.press-img
+{
+height:3rem;
+margin:30px 30px;
+}
+
+
+/* Section4 */
+#pricing
+{
+padding:7% 15%;
+text-align:center;
+}
+.pricing-header
+{
+color:black;
+}
+
+/* section5  */
+
+#cta
+{
+background-color:#ff4c68;
+text-align:center;
+color:white;
+padding: 7% 20%;
+
+}
+#cta h3{
+ font-size:3rem;
+ margin-bottom:5%;
+ line-height:1.5;
+}
+.download2_btn
+{
+margin-right:1.3rem;
+}
+
+/* footer */
+
+
+
+/* media query for header/title section */
+@media (max-width:990px)
+{
+#title
+{
+  text-align:center;
+}
+#header-img
+{
+  position:static;
+  transform:rotate(0);
+}
+}

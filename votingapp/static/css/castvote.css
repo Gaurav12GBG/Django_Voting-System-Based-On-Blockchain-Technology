@@ -1,0 +1,118 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+}
+
+
+.para {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.table tr img {
+    width: 65px;
+    vertical-align: middle;
+}
+
+.voteButton {
+
+    display: grid;
+    height: 67px;
+    margin: auto;
+    border: 2px solid green;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.makechange {
+    margin-top: 10px;
+}
+
+.sendkey {
+    width: 80px;
+    padding: 0px;
+    margin-top: -4px;
+    border: 2px solid rgb(95, 95, 95);
+    font-size: revert;
+    margin-left: 178px;
+    background-color: green;
+    color: white;
+}
+
+.contentchange {
+    border-left: 2px solid green;
+    border-right: 2px solid green;
+    border-bottom: 10px solid green;
+}
+
+.goForVoteDiv {
+    margin: auto;
+    border: 2px solid #e2e2e2;
+    padding: 82px;
+    border-radius: 5px;
+}
+
+.goForVoteDiv:hover{
+    background-color:#e2e2e2;
+    border:2px solid grey;
+}
+
+.goForVoteHeading {
+    text-align: center;
+    color: red;
+}
+
+.goForVoteHeading:hover{
+    color:orangered;
+}
+
+.goForVotebtn {
+    border: 2px solid greenyellow;
+    background-color:green;
+    color: white;
+    font-weight: bold;
+}
+
+.goForVotebtn:hover{
+    background-color: rgb(3, 73, 3);
+    color: white;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3rem;
+    color: orangered;
+    text-transform: uppercase;
+    position: relative;
+    margin-left: 38%;
+    margin-top: 32px;
+}
+
+h1::before {
+    content: "~WELCOME~";
+    width: 100%;
+    color: brown;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 0.4rem solid brown;
+    animation: slide 2s linear infinite;
+    -webkit-animation: slide 2s linear infinite;
+    overflow: hidden;
+}
+
+@keyframes slide {
+    0% {
+        width: 0%;
+    }
+
+    50% {
+        width: 45%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}

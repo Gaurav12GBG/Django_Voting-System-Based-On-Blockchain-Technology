@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}E-voting/About{% endblock title %}
+
+{% block aboutactive %} active {% endblock aboutactive %}
+
+{% block body %}
+<div class="container">
+    <div class="row featurette" style="margin-top:4rem;">
+        <div class="col-md-7">
+            {% load static %}
+            <h2 class="featurette-heading"><strong><img src="{% static 'main_img/aboutSmile.png' %}" width="40px">About Us</strong></h2>
+            <p class="lead">Our team is the creator of this website. We are contributed our
+                ideas with lots of project in Django. We are done various projects on various technologies. We are
+                passionate to learn and implement new things quickly.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                src="https://source.unsplash.com/1600x900/?code, laptop" alt="">
+        </div>
+    </div>
+
+
+    <div class="row featurette" style="margin-top:6.5rem;margin-left:0.5rem;">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading"><strong>About Voting System</strong></h2>
+            <p class="lead">This website is a very simple, clickable and easy to understand. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis rem laboriosam unde repellat incidunt, voluptatem maxime quia similique. Molestias placeat vero officiis amet. Suscipit consequatur inventore, ipsam soluta quas dolorum quibusdam dignissimos sequi rem veniam architecto libero accusamus nisi aspernatur consequuntur harum. Neque distinctio fuga corporis repudiandae ab ad. </p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                src="https://source.unsplash.com/1600x900/?wordcount, website" alt="">
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock body %}

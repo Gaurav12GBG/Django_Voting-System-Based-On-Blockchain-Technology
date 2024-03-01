@@ -1,0 +1,56 @@
+{% extends 'blog/basic.html' %}
+
+{% block title %} Search Results {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %}
+
+{% block body %}
+<div class="container my-3">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      <strong>Message : </strong> {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    <h2>Search results : </h2>
+    {% if allPosts|length < 1 %} <p>No search results</p>
+        Your search query : <b>{{query}}</b> did not match any documents. <br>
+        Suggestions:
+        <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try more general keywords.</li>
+            <li> Try fewer keywords.</li>
+            <li> Try different keywords.</li>
+            </li>
+        </ul>
+
+
+        {% endif %}
+        <div class="row my-2">
+        {% for item in allPosts %}
+        
+            <div class="col-md-6">
+                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary"></strong>
+                    <h3 class="mb-0">{{item.title}}</h3>
+                    <div class="mb-1 text-muted">{{item.pub_date}}</div>
+                    <p class="card-text mb-auto">{{item.head0}}.......</p>
+                    <a href="blogpost/{{item.post_id}}" class="stretched-link">Continue reading</a>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                    <img src ="/media/{{item.thumbnail}}"class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="xMidYMid slice" focusable="false"  aria-label="Placeholder: Thumbnail">
+                    
+                    <rect width="100%" height="100%" fill="#55595c"></rect>
+                </img>
+                </div>
+                </div>
+            </div>
+            {%if forloop.counter|divisibleby:2%}
+        </div><div class="row my-2">
+        {% endif %}
+        {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Online Voting System - System Guide{% endblock title %}
+{% load static %}
+<link rel="stylesheet" href="{%  static 'css/systemguide.css' %}">
+
+
+{% block body %}
+<div class="text mx-auto d-block;"
+    style="margin-top:40px;border:2px solid green;width:630px;background-color:green;color:white;">
+    <h3 style="text-align:center;">***System Guide***</h3>
+</div>
+<div class="container shadow" style="margin-top:0px;background-color:white;border-top: 2px solid green;height: 640px;">
+    <div class="info">
+        <h2>Welcome</h2>
+        <h4>These are few guidelines for user :</h4>
+        <h4>Voter registration :</h4>
+        <ul>
+            <li><b>1. </b> Casting the vote user needs to first register himself. For this registration purpose the user
+                will
+                be provided a voter registration form on this website. </li>
+            <li><b>2. </b>The voter can only register in the registration phase. After the registration phase is over
+                the
+                user cannot registered and thus will not be able to vote. </li>
+            <li><b>3. </b>For registration,the users age will have to enter the aadhar card number and account address
+                which the user will be using forvoting purpose.</li>
+            <li><b>4. </b>At the first stage the users age will be checked if the users is 18 or above 187 years of age
+                then only he is eligible to vote. </li>
+            <li><b>5. </b>The second stage is otp verification. this stage is required to validate the voter itself.
+                after entering the aadhar number and successful age verification.</li>
+            <li><b>6. </b> After entering correct otp user will get successfully registerd.</li>
+        </ul>
+        <h4>Voting process</h4>
+        <ul>
+            <li> Overall voting process is divided into three phases all of which will be initilized and terminated by
+                the admin user have to participate in the process according to current phase.</li>
+            <li><b>1. Registration phase</b> during this phase all of the users (which are going to cast the vote) will
+                be carried out.</li>
+            <li><b>2. Voting phase</b> after initilization of voting phase from the admin,user can cast the vote in
+                voting section.the casting of vote can be simply done by checking on "vote"button, after which
+                transaction will be initiated and after confirming transaction the vote will get successfully casted
+                after voting phase gets over user will not able to cast vote. </li>
+            <li><b>3. Result phase</b> this is the final stage of whole voting process during which the results of
+                election will be displayed at "result section".</li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock body%}

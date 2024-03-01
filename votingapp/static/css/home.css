@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+/* home.css */
+.container h2{
+    margin-top: 20px;
+}
+
+.round{
+    border: 2px solid black;
+    
+}
+
+.abc{
+    padding-right: 100px;
+}
+.abc:hover{
+    
+    transform: scale(1.2);
+}
+.x{
+    border: 2px solid brown;
+}
+
+
+   
+
+

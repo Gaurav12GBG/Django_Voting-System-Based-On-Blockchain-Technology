@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block title %}Online Voting System - Result{% endblock title %}
+{% load static %}
+<link rel="stylesheet" href="{%  static 'css/result.css' %}">
+
+
+{% block body %}
+{% load static %}
+<div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:0px;">
+    <strong>Welcomt to E-Voting!</strong> You can check the final result of candidate here...
+</div>
+
+<div class="container" style="margin-top:45px;">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 shadow" style="border: 2px solid green;">
+                <img src="{% static 'main_img/profile.png' %}" class="card-img-top imgchange">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-primary" id="cad1">Candidate 1</h5>
+                    <p class="card-text text-center">Final Count is Now : <strong id="cad1count">0</strong> </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow">
+                <img src="{% static 'main_img/profile.png' %}" class="card-img-top imgchange">
+                <div class="card-body">
+                    <h5 class="card-title text-primary text-center" id="cad2">Candidate 2</h5>
+                    <p class="card-text text-center">Final Count is Now : <strong id="cad2count">0</strong></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
+    integrity="sha256-qM7QTJSlvtPSxVRjVWNM2OfTAz/3k5ovHOKmKXuYMO4=" crossorigin="anonymous"></script>
+<script src="js/contract.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+<script language="javascript" type="text/javascript" src="js/web3.min.js"></script>
+<script src="vendor/web3/dist/web3.js"></script>
+
+<script>
+    var myContract;
+    let web3
+    if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
+        //We are in the browser and metamask is running
+        web3 = new Web3(window.web3.currentProvider);
+    }
+    async function CheckMetamaskConnection() {
+        // Modern dapp browsers...
+        if (window.ethereum) {
+            window.web3 = new Web3(window.ethereum);
+            try {
+                // Request account access if needed
+                await ethereum.enable();
+                // Acccounts now exposed
+                return true;
+            } catch (error) {
+                // User denied account access...
+                return false;
+            }
+        }
+        // Legacy dapp browsers...
+        else if (window.web3) {
+            window.web3 = new Web3(web3.currentProvider);
+            // Acccounts always exposed
+
+            return true;
+        }
+        // Non-dapp browsers...
+        else {
+            console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            return false;
+        }
+    }
+
+    $(document).ready(async function () {
+        var IsMetamask = await CheckMetamaskConnection();
+        if (IsMetamask) {
+            myContract = await web3.eth.contract(SmartContractABI).at(SmartContractAddress);
+            getCandidate(1);
+            getCandidate(2);
+
+            await myContract.eventVote({
+                fromBlock: 0
+            }, function (err, event) {
+                console.log("event :", event);
+                getCandidate(event.args._candidateid.toNumber());
+            });
+            console.log("myContract :", myContract);
+            console.log("Metamask detected!")
+        } else {
+            console.log("Metamask not detected");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Metamask not detected!',
+                onClose() {
+                    location.reload();
+                }
+            });
+        }
+    });
+
+    async function getCandidate(cad) {
+        await myContract.candidates(cad, function (err, result) {
+            if (!err) {
+                document.getElementById("cad" + cad).innerHTML = result[1];
+                document.getElementById("cad" + cad + 'count').innerHTML = result[2].toNumber();
+            }
+        });
+    }
+
+    async function Vote(cad) {
+        await myContract.vote(cad, function (err, result) {
+            if (!err) {
+                console.log("We are winning!");
+            } else {
+                console.log("Can not connect to the smart contract");
+            }
+        })
+    }
+/* function yourFunction() {
+          const alert = document.getElementById("alert")
+          const can1 = document.getElementById("cad1").innerText
+          const can2 = document.getElementById("cad2").innerText
+          const can1N = Number(document.getElementById("cad1count").innerText)
+          const can2N = Number(document.getElementById("cad2count").innerText)
+         var obj = { [can1]: can1N, [can2]: can2N};
+          var maxCanN  = (Object.keys(obj).reduce(function (can1, can2) { return obj[can1] > obj[can2] ? can1 : can2 }));
+          var max = obj[maxCanN]
+          const html = `<span class="d-flex justify-content-center" ><strong class="mx-2">${maxCanN} </strong> Having Maximum votes : <strong class="mx-2">${max}</strong></span>`
+          alert.style.display = "block";
+          alert.innerHTML = html;
+          
+          
+        }*/
+
+
+</script>
+
+
+{% endblock body%}
